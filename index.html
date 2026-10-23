@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081627"><meta name="description" content="Battleship Multi-Shot: เกมเรือรบ Python เล่นบนเว็บผ่าน Pyodide และ GitHub Pages">
+<title>Battleship · Multi-Shot Edition</title><link rel="stylesheet" href="style.css">
+<script defer src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="./" aria-label="หน้าเกม Battleship"><span class="logo">⚓</span><span>BATTLESHIP <small>MULTI-SHOT EDITION</small></span></a><div class="tag">PYTHON × BROWSER</div></header>
+<main class="container">
+  <section class="hero"><div class="eyebrow">TACTICAL NAVAL COMBAT / 10 × 10 GRID</div><h1>บัญชาการ<span>กองเรือ</span><br>พิชิตน่านน้ำศัตรู</h1><p>วางเรือของคุณ ยิงเป้าหมายอย่างมีกลยุทธ์ และรักษาอำนาจการยิงในทุกเทิร์น — เรือถูกจม จำนวนกระสุนจะลดลง</p><div class="hero-actions"><button id="new-game" class="primary" disabled>↻ เริ่มเกมใหม่</button><button id="auto-place" class="secondary" disabled>✦ สุ่มวางเรือ</button><button id="restore" class="secondary" disabled>↶ โหลดเกมที่บันทึก</button></div><p id="loader" class="load" role="status">◌ กำลังโหลด Python engine… ต้องใช้อินเทอร์เน็ตครั้งแรก</p></section>
+  <section class="status-row" aria-label="สถานะเกม"><div><span class="stat-label">สถานะ</span><strong id="phase">กำลังโหลด</strong></div><div><span class="stat-label">เทิร์น</span><strong id="turn">—</strong></div><div><span class="stat-label">นัดที่เหลือ</span><strong id="shots">—</strong></div><div><span class="stat-label">เรือเรา / ศัตรู</span><strong id="ships">—</strong></div></section>
+  <section class="game-layout"><article class="panel"><div class="panel-head"><div><p>YOUR FLEET</p><h2>น่านน้ำของคุณ</h2></div><span class="panel-badge">DEFENSE</span></div><div id="player-board" class="board" role="grid" aria-label="กระดานวางเรือผู้เล่น"></div><p class="board-help" id="placement-help">คลิกช่องเพื่อวางเรือเรียงตามลำดับ (ทิศทางถูกกำหนดตามชนิดเรือ)</p></article>
+  <article class="panel enemy-panel"><div class="panel-head"><div><p>ENEMY WATERS</p><h2>น่านน้ำศัตรู</h2></div><span class="panel-badge danger">ATTACK</span></div><div id="enemy-board" class="board" role="grid" aria-label="กระดานยิงศัตรู"></div><p class="board-help">คลิกช่องของศัตรูเพื่อยิงเมื่อเข้าสู่ช่วงการรบ</p></article></section>
+  <section class="bottom-layout"><article class="panel feedback"><div class="panel-head"><div><p>COMMAND CENTER</p><h2>บันทึกการรบ</h2></div></div><div id="message" class="message" role="status" aria-live="polite">กำลังเตรียมสมรภูมิ…</div><ol id="events" class="events"></ol><div class="legend"><span><i class="legend-cell ship"></i> เรือ</span><span><i class="legend-cell miss"></i> พลาด</span><span><i class="legend-cell hit"></i> โดน</span><span><i class="legend-cell sunk"></i> จม</span></div></article>
+  <article class="panel records"><div class="panel-head"><div><p>LOCAL RECORDS / JSON PERSISTENCE</p><h2>ประวัติการแข่งขัน</h2></div></div><p class="muted">ข้อมูลเก็บในเบราว์เซอร์เครื่องนี้ ไม่ส่งขึ้นเซิร์ฟเวอร์</p><div class="form-row"><label for="player-name">ชื่อผู้เล่น</label><input id="player-name" maxlength="24" placeholder="Captain" autocomplete="nickname"></div><div class="filters"><input id="search" aria-label="ค้นหาชื่อผู้เล่น" placeholder="ค้นหาชื่อ…"><select id="filter" aria-label="กรองผลการแข่งขัน"><option value="all">ทุกผลการแข่งขัน</option><option value="win">ชนะ</option><option value="lose">แพ้</option></select><select id="sort" aria-label="เรียงลำดับ"><option value="newest">ล่าสุดก่อน</option><option value="oldest">เก่าสุดก่อน</option><option value="turns">เทิร์นน้อยก่อน</option></select></div><div id="record-list" class="record-list"></div><div class="data-buttons"><button id="export" class="secondary" disabled>↓ ส่งออก JSON</button><label class="upload">↑ นำเข้า JSON<input type="file" id="import" accept=".json,application/json" hidden></label></div></article></section>
+  <footer>CP352301 · SCRIPT PROGRAMMING FINAL PROJECT <span>MADE WITH PYTHON • PYODIDE • GITHUB PAGES</span></footer>
+</main>
+</body></html>
