@@ -1,5 +1,7 @@
 # ⚓ Battleship: Multi-Shot Edition — Python Web Final Project
 
+Created by: นายเมธัส มณีวิจิตร Section 01
+
 A responsive Battleship web game based on the original Python CLI mini-project. **Game mechanics really run in Python** inside the browser using Pyodide; static HTML/CSS/JS provides the frontend, so it can be deployed on **GitHub Pages** without a Python server.
 
 ## Features
